@@ -255,4 +255,143 @@ The array becomes:
 Now the first two elements are sorted:
 
 2 3 | 5 8 9 1
+
+
+
+Second iteration
+
+Now:
+
+i = 2
+
+So:
+
+int curr = arr[2];
+
+Therefore:
+
+curr = 5
+
+And:
+
+int prev = i - 1;
+
+gives:
+
+prev = 1
+
+We have:
+
+2 3 | 5 8 9 1
+    ↑   ↑
+   prev curr
+
+Check:
+
+arr[prev] > curr
+
+3 > 5
+
+False.
+
+So nothing needs to move.
+
+Then:
+
+arr[prev + 1] = curr;
+
+means:
+
+arr[2] = 5
+
+Nothing changes.
+
+
+
+When curr = 1
+
+This is the most useful iteration to understand.
+
+Before inserting 1, the array looks like:
+
+2 3 5 8 9 | 1
+          ↑   ↑
+        sorted curr
+
+Here:
+
+i = 5
+curr = 1
+prev = 4
+
+Now:
+
+arr[prev] > curr
+
+means:
+
+9 > 1
+
+True.
+
+Shift 9:
+
+2 3 5 8 9 9
+
+Move prev:
+
+prev = 3
+
+Now:
+
+8 > 1
+
+Shift:
+
+2 3 5 8 8 9
+
+Again:
+
+prev = 2
+5 > 1
+
+Shift:
+
+2 3 5 5 8 9
+
+Again:
+
+prev = 1
+3 > 1
+
+Shift:
+
+2 3 3 5 8 9
+
+Again:
+
+prev = 0
+2 > 1
+
+Shift:
+
+2 2 3 5 8 9
+
+Again:
+
+prev = -1
+
+Stop.
+
+Then:
+
+arr[prev + 1] = curr;
+
+becomes:
+
+arr[0] = 1;
+
+Final:
+
+1 2 3 5 8 9
  */
