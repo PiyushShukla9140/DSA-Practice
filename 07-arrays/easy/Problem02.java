@@ -65,12 +65,51 @@ public class Problem02{
 
 
     // optimum approach 
-    
+    public static void optimum(int arr[],int n){
+        if (n < 2) {
+            System.out.println(-1 + " " + -1);  // Print -1 for both second smallest and second largest
+            return;
+        }
+
+        int small = Integer.MAX_VALUE , second_small = Integer.MAX_VALUE;
+        int large = Integer.MIN_VALUE , second_large = Integer.MIN_VALUE;
+
+        // for smallest
+        // simply approach yahi hai ki agar koi naya smallest number aa jaata hai toh old smallest ko second small pe daal do and naye wale smallest me daal do
+        for(int i=0;i<n;i++){
+            if(arr[i]<small){
+                second_small = small;
+                small = arr[i];
+            }
+            else if(arr[i]<second_small && arr[i]!=small){
+                second_small = arr[i];
+            }
+        }
+
+
+        // fpr largest
+        for(int i=0;i<n;i++){
+            if(arr[i]>large){
+                second_large = large;
+                large = arr[i];
+            }
+            else if(arr[i]>second_large && arr[i]!=large){
+                second_large = arr[i];
+            }
+        }
+
+        System.out.println("The secons smallest number is: "+ second_small);
+        System.out.println("The secons largest number is: "+ second_large);
+
+        
+    }
 
     public static void main(String[]args){
         int arr[] = {1,4,6,8,3,7,9};
         int n = arr.length;
         // sort(arr,n);
-        better(arr,n);
+        // better(arr,n);
+        optimum(arr,n);
+
     }
 }
